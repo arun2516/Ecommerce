@@ -34,7 +34,7 @@ export default function Cart() {
     }, [cart])
     
     const addToCart = async (cart) => {
-        await axios.patch('http://shoppeecom.herokuapp.com/user/addcart', {cart}, {
+        await axios.patch('/user/addcart', {cart}, {
           headers: {Authorization: token}
         })
       }
@@ -74,7 +74,7 @@ export default function Cart() {
     
     const tranSuccess = async(payment) => {
         const {paymentID, address} = payment
-        await axios.post(`http://shoppeecom.herokuapp.com/api/payment`, {cart, paymentID, address}, {
+        await axios.post(`/api/payment`, {cart, paymentID, address}, {
             headers: {Authorization: token}
         })
         setCart([])

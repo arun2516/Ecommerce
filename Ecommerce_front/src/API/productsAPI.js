@@ -12,7 +12,7 @@ export default function ProductsAPI() {
 
     useEffect(() => {
         const getProducts = async () => {
-            let link = `http://shoppeecom.herokuapp.com/api/products?limit=${page*9}&${category}&${sort}&title[regex]=${search}`
+            let link = `/api/products?limit=${page*9}&${category}&${sort}&title[regex]=${search}`
             const response = await axios.get(link)
             setProducts(response.data.products)
             setResult(response.data.result)

@@ -74,7 +74,7 @@ export default function AdminProductsList() {
             let formData = new FormData()
             formData.append("file", file)
             setLoading(true)
-            const response = await axios.post(`http://shoppeecom.herokuapp.com/api/upload`, formData, {
+            const response = await axios.post(`/api/upload`, formData, {
                 headers: {"content-type":"multipart/form-data", Authorization: token}
             })
             setLoading(false)
@@ -95,7 +95,7 @@ export default function AdminProductsList() {
             setLoading(true)
             if(!isAdmin) return Swal.fire("You're not an admin")
             setLoading(true)
-            await axios.post("http://shoppeecom.herokuapp.com/api/destroy", {public_id: images.public_id}, {
+            await axios.post("/api/destroy", {public_id: images.public_id}, {
                 Authorization: token
             })
             setImages(false)
@@ -112,12 +112,12 @@ export default function AdminProductsList() {
                if(!images) return Swal.fire("No images upload")
 
                if(onEdit) {
-                   await axios.put(`http://shoppeecom.herokuapp.com/api/products/${product._id}`, {...product, images}, {
+                   await axios.put(`/api/products/${product._id}`, {...product, images}, {
                         headers: {Authorization: token}
                    })
                }
                else {
-                   await axios.post(`http://shoppeecom.herokuapp.com/api/products`, {...product, images}, {
+                   await axios.post(`/api/products`, {...product, images}, {
                        headers: {Authorization: token}
                    })
                }
@@ -131,10 +131,10 @@ export default function AdminProductsList() {
     const deleteProduct = async(id, public_id) => {
         try {
             setLoading(true)
-            const destroyImg = axios.post(`http://shoppeecom.herokuapp.com/api/destroy`, {public_id}, {
+            const destroyImg = axios.post(`/api/destroy`, {public_id}, {
                 headers: {Authorization: token}
             })
-           const deleteProduct = axios.delete(`http://shoppeecom.herokuapp.com/api/products/${id}`, {
+           const deleteProduct = axios.delete(`/api/products/${id}`, {
                headers: {Authorization: token}
            })
             await destroyImg

@@ -24,7 +24,7 @@ export default function Header() {
     }
 
     const logoutUser = async() => {
-       await axios.get(`http://shoppeecom.herokuapp.com/user/logout`)
+       await axios.get(`/user/logout`)
        localStorage.removeItem("Login")
        window.location.href = ('/')
     }
