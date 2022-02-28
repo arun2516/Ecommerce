@@ -8,7 +8,7 @@ const path = require('path')
 
 const app = express()
 app.use(express.json())
-app.use(cookieParser())
+app.use(cookieParser()) 
 
 
 const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://shrouded-journey-38552.heroku.com']
